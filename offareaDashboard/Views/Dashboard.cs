@@ -39,7 +39,7 @@ namespace offareaDashboard.Views
                 string rawJSON = client.DownloadString(new Helper.ApiRoutes().AllVendors);
                 VendorCollection vendors = JsonConvert.DeserializeObject<VendorCollection>(rawJSON);
                 rawJSON = rawJSON.Replace("[", "").Replace("]", "");
-                
+                //here we goes
             }
            
         }
