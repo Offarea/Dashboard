@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using offareaDashboard.Models;
 using offareaDashboard.Models.Collections;
 using System;
 using System.Collections.Generic;
@@ -29,19 +30,26 @@ namespace offareaDashboard.Views
             this.lblFullname.Text = fullname;
             this.lblApiToken.Text = apiToken;
 
-            getAllVendors();
+           
         }
 
-        private void getAllVendors()
+        private VendorFinancialInfo getAllVendors()
         {
             using (WebClient client = new WebClient())
             {
                 string rawJSON = client.DownloadString(new Helper.ApiRoutes().AllVendors);
-                VendorCollection vendors = JsonConvert.DeserializeObject<VendorCollection>(rawJSON);
-                rawJSON = rawJSON.Replace("[", "").Replace("]", "");
-                //here we goes
+                //rawJSON = rawJSON.Replace("[", "").Replace("]", "");
+                VendorFinancialInfo vendors = JsonConvert.DeserializeObject<VendorFinancialInfo>(rawJSON);
+                return vendors;
             }
            
+        }
+
+        private void btnLoadData_Click(object sender, EventArgs e)
+        {
+            VendorFinancialInfo vendors = getAllVendors();
+            MessageBox.Show("Test");
+
         }
     }
 }

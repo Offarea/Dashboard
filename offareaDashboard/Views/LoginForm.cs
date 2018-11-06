@@ -1,64 +1,53 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Windows.Forms;
-using System.Net;
-using System.IO;
-using offareaDashboard.Models;
 using Newtonsoft.Json;
-using System.Runtime.Serialization.Json;
-using offareaDashboard.Models.Collections;
 using System.Net.Http.Headers;
-using offareaDashboard.Helper;
 using System.Threading.Tasks;
+using offareaDashboard.Helper;
 
-namespace offareaDashboard
+namespace offareaDashboard.Views
 {
-    public partial class Login : Form
+    public partial class LoginForm : Form
     {
         ApiRoutes api;
-        public Login()
+
+        public LoginForm()
         {
             InitializeComponent();
-            api = new ApiRoutes();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
-        {          
+        {
             if (txtPassword.Text == "" || txtUsername.Text == "")
             {
                 MessageBox.Show("You must enter valid data!");
             }
             else
-            {                
-                CheckifUserLoggedinAsync();
-               
-            }
-        }
-
-        private async Task CheckifUserLoggedinAsync()
-        {
-            offareaDashboard.Models.Login login = await PostRequest(api.LoginRoute(), txtUsername.Text, txtPassword.Text);
-            if(login != null)
             {
-                Views.Dashboard dashboard = new Views.Dashboard(login.Result.User.Name, login.Result.User.ApiToken);
-                dashboard.ShowDialog();
-                this.Hide();
+                CheckifUserLoggedinAsync();
+
             }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            DialogResult = DialogResult.Cancel;
+        }
+
+        private async Task CheckifUserLoggedinAsync()
+        {
+            offareaDashboard.Models.Login login = await PostRequest(api.LoginRoute(), txtUsername.Text, txtPassword.Text);
+            if (login != null)
+            {
+                DialogResult = DialogResult.OK;
+                return;
+            }
         }
 
         public async Task<offareaDashboard.Models.Login> PostRequest(string url, string username, string password)
-        {          
+        {
             IEnumerable<KeyValuePair<string, string>> queries = new List<KeyValuePair<string, string>>()
             {
                 new KeyValuePair<string, string>("username", username),
@@ -66,12 +55,12 @@ namespace offareaDashboard
             };
             HttpContent q = new FormUrlEncodedContent(queries);
             using (HttpClient client = new HttpClient())
-            {                
+            {
                 client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json; charset=utf-8");
                 using (HttpResponseMessage response = await client.PostAsync(url, q))
                 {
                     using (HttpContent content = response.Content)
-                    {                 
+                    {
                         string data = await content.ReadAsStringAsync();
                         HttpContentHeaders headers = content.Headers;
                         data = data.Replace("]", "").Replace("[", "");
@@ -81,6 +70,7 @@ namespace offareaDashboard
                 }
 
             }
-        }       
+        }
+
     }
 }

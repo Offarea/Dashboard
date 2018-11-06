@@ -30,18 +30,28 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.picProfilePicture = new System.Windows.Forms.PictureBox();
-            this.lblFullname = new System.Windows.Forms.Label();
             this.lblApiToken = new System.Windows.Forms.Label();
+            this.lblFullname = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnLoadData = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picProfilePicture)).BeginInit();
+            this.panel2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -49,21 +59,20 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.lblApiToken);
             this.panel1.Controls.Add(this.lblFullname);
-            this.panel1.Controls.Add(this.picProfilePicture);
             this.panel1.Location = new System.Drawing.Point(520, 28);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(240, 102);
+            this.panel1.Size = new System.Drawing.Size(240, 37);
             this.panel1.TabIndex = 0;
             // 
-            // picProfilePicture
+            // lblApiToken
             // 
-            this.picProfilePicture.Image = ((System.Drawing.Image)(resources.GetObject("picProfilePicture.Image")));
-            this.picProfilePicture.Location = new System.Drawing.Point(3, 3);
-            this.picProfilePicture.Name = "picProfilePicture";
-            this.picProfilePicture.Size = new System.Drawing.Size(96, 94);
-            this.picProfilePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picProfilePicture.TabIndex = 1;
-            this.picProfilePicture.TabStop = false;
+            this.lblApiToken.AutoSize = true;
+            this.lblApiToken.Enabled = false;
+            this.lblApiToken.Location = new System.Drawing.Point(34, 8);
+            this.lblApiToken.Name = "lblApiToken";
+            this.lblApiToken.Size = new System.Drawing.Size(0, 19);
+            this.lblApiToken.TabIndex = 3;
+            this.lblApiToken.Visible = false;
             // 
             // lblFullname
             // 
@@ -75,22 +84,13 @@
             this.lblFullname.TabIndex = 2;
             this.lblFullname.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // lblApiToken
-            // 
-            this.lblApiToken.AutoSize = true;
-            this.lblApiToken.Enabled = false;
-            this.lblApiToken.Location = new System.Drawing.Point(202, 50);
-            this.lblApiToken.Name = "lblApiToken";
-            this.lblApiToken.Size = new System.Drawing.Size(0, 19);
-            this.lblApiToken.TabIndex = 3;
-            this.lblApiToken.Visible = false;
-            // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Location = new System.Drawing.Point(12, 138);
+            this.panel2.Controls.Add(this.tabControl1);
+            this.panel2.Location = new System.Drawing.Point(12, 71);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(748, 316);
+            this.panel2.Size = new System.Drawing.Size(748, 383);
             this.panel2.TabIndex = 1;
             // 
             // toolStrip1
@@ -142,12 +142,96 @@
             this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton4.Text = "toolStripButton4";
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.tabControl1.RightToLeftLayout = true;
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(746, 381);
+            this.tabControl1.TabIndex = 0;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.dataGridView1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 28);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(738, 349);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "    کسبه    ";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 28);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(738, 349);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "    پیشنهادات    ";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 28);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(738, 349);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "    سفارشات    ";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(6, 6);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(729, 269);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // btnLoadData
+            // 
+            this.btnLoadData.Location = new System.Drawing.Point(13, 28);
+            this.btnLoadData.Name = "btnLoadData";
+            this.btnLoadData.Size = new System.Drawing.Size(130, 38);
+            this.btnLoadData.TabIndex = 3;
+            this.btnLoadData.Text = "بارگذاری اطلاعات";
+            this.btnLoadData.UseVisualStyleBackColor = true;
+            this.btnLoadData.Click += new System.EventHandler(this.btnLoadData_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(149, 28);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(130, 38);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "حذف اطلاعات";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(285, 28);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(130, 38);
+            this.button3.TabIndex = 3;
+            this.button3.Text = "خروج از برنامه";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(772, 466);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnLoadData);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -164,9 +248,12 @@
             this.Load += new System.EventHandler(this.Dashboard_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picProfilePicture)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -177,12 +264,19 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblApiToken;
         private System.Windows.Forms.Label lblFullname;
-        private System.Windows.Forms.PictureBox picProfilePicture;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ToolStripButton toolStripButton4;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnLoadData;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }
