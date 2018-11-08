@@ -26,7 +26,8 @@ namespace offareaDashboard.Views
             }
             else
             {
-                CheckifUserLoggedinAsync();
+                // CheckifUserLoggedinAsync();
+                DialogResult = DialogResult.OK;
 
             }
         }

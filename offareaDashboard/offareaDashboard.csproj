@@ -58,6 +58,7 @@
     </Compile>
     <Compile Include="Models\Collections\ProductCollection.cs" />
     <Compile Include="Models\Collections\VendorCollection.cs" />
+    <Compile Include="Models\Collections\VendorFinancialInfoCollection.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\LoginResult.cs" />
     <Compile Include="Models\Product.cs" />
